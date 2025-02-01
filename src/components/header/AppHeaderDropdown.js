@@ -22,7 +22,7 @@ const AppHeaderDropdown = () => {
       </CDropdownToggle>
       <CDropdownMenu>
 
-        <Link to="/login">
+        <Link to="/profile">
           <CDropdownItem>
             <CIcon icon={cilUser} className="me-2" />
             Perfil
@@ -30,7 +30,7 @@ const AppHeaderDropdown = () => {
         </Link>
 
 
-        <CDropdownItem as={Link} to="/login">
+        <CDropdownItem as={Link} to="/">
           <CIcon icon={cilLockLocked} className="me-2" />
           Cerrar Sesion
         </CDropdownItem>
