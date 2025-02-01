@@ -22,9 +22,9 @@ import { helpHttp } from '../../helpHttp.js';
 
 const Schedule = () => {
     const api = helpHttp();
-    const urlSchedules = 'http://localhost:4000/TtEntren'; // Cambia esta URL según tu API
-    const urlSubcategories = 'http://localhost:4000/TmSubCa'; // Cambia esta URL según tu API
-    const urlCategories = 'http://localhost:4000/TmCateg'; // Cambia esta URL según tu API
+    const urlSchedules = 'https://json-ymsx.onrender.com/TtEntren';
+    const urlSubcategories = 'https://json-ymsx.onrender.com/TmSubCa';
+    const urlCategories = 'https://json-ymsx.onrender.com/TmCateg';
 
     const [trainingSchedules, setTrainingSchedules] = useState([]);
     const [subcategories, setSubcategories] = useState([]);

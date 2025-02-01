@@ -21,7 +21,7 @@ import { helpHttp } from '../../helpHttp';
 
 const Trainer = () => {
     const api = helpHttp();
-    const urlEntrenadores = 'http://localhost:4000/TtEntre';
+    const urlEntrenadores = 'https://json-ymsx.onrender.com/TtEntre';
     const subcategorias = [
         { id: 1, name: 'Infantil' },
         { id: 2, name: 'Pre-Infantil' },

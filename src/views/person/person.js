@@ -20,7 +20,7 @@ import { helpHttp } from '../../helpHttp.js';
 
 const Person = () => {
     const api = helpHttp();
-    const urlRepresentatives = 'http://localhost:4000/TtRepres';
+    const urlRepresentatives = 'https://json-ymsx.onrender.com/TtRepres';
 
     const [representatives, setRepresentatives] = useState([]);
     const [filteredRepresentatives, setFilteredRepresentatives] = useState([]);

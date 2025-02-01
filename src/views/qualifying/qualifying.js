@@ -23,11 +23,11 @@ import { helpHttp } from '../../helpHttp';
 
 const SubCategory = () => {
     const api = helpHttp();
-    const urlAthletes = 'http://localhost:4000/TtAtlet';
-    const urlTeams = 'http://localhost:4000/TmEquip';
-    const urlCategories = 'http://localhost:4000/TmCateg';
-    const urlSubCategories = 'http://localhost:4000/TmSubCa';
-    const urlTeamAthletes = 'http://localhost:4000/TtEquAtl';
+    const urlAthletes = 'https://json-ymsx.onrender.com/TtAtlet';
+    const urlTeams = 'https://json-ymsx.onrender.com/TmEquip';
+    const urlCategories = 'https://json-ymsx.onrender.com/TmCateg';
+    const urlSubCategories = 'https://json-ymsx.onrender.com/TmSubCa';
+    const urlTeamAthletes = 'https://json-ymsx.onrender.com/TtEquAtl';
 
     const [modalOpen, setModalOpen] = useState(false);
     const [addAthleteModalOpen, setAddAthleteModalOpen] = useState(false);

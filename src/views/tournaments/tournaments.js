@@ -24,11 +24,11 @@ import { helpHttp } from '../../helpHttp';
 
 const Tournaments = () => {
     const api = helpHttp();
-    const urlTournaments = 'http://localhost:4000/TmTorneo';
-    const urlTeams = 'http://localhost:4000/TmEquip';
-    const urlTournamentTeams = 'http://localhost:4000/TtTorneoEqu';
-    const urlCategories = 'http://localhost:4000/TmCateg';
-    const urlSubcategories = 'http://localhost:4000/TmSubCa';
+    const urlTournaments = 'https://json-ymsx.onrender.com/TmTorneo';
+    const urlTeams = 'https://json-ymsx.onrender.com/TmEquip';
+    const urlTournamentTeams = 'https://json-ymsx.onrender.com/TtTorneoEqu';
+    const urlCategories = 'https://json-ymsx.onrender.com/TmCateg';
+    const urlSubcategories = 'https://json-ymsx.onrender.com/TmSubCa';
 
     const [tournaments, setTournaments] = useState([]);
     const [teams, setTeams] = useState([]);

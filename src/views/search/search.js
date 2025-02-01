@@ -24,9 +24,9 @@ import { helpHttp } from '../../helpHttp';
 
 const Search = () => {
     const api = helpHttp();
-    const urlRepresentatives = 'http://localhost:4000/TtRepres';
-    const urlAthletes = 'http://localhost:4000/TtAtlet';
-    const urlEvaluations = 'http://localhost:4000/TtEval';
+    const urlRepresentatives = 'https://json-ymsx.onrender.com/TtRepres';
+    const urlAthletes = 'https://json-ymsx.onrender.com/TtAtlet';
+    const urlEvaluations = 'https://json-ymsx.onrender.com/TtEval';
 
     const [user, setUser] = useState({
         cedula: '',

@@ -20,7 +20,7 @@ import { helpHttp } from '../../helpHttp.js';
 
 const Athlete = () => {
     const api = helpHttp();
-    const urlAthletes = 'http://localhost:4000/TtAtlet';
+    const urlAthletes = 'https://json-ymsx.onrender.com/TtAtlet';
 
     const [athletes, setAthletes] = useState([]);
     const [filteredAthletes, setFilteredAthletes] = useState([]);

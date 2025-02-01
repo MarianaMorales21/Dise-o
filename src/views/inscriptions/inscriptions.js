@@ -18,9 +18,9 @@ import { helpHttp } from '../../helpHttp';
 
 const Inscriptions = () => {
     const api = helpHttp();
-    const urlAthletes = 'http://localhost:4000/TtAtlet';
-    const urlRepresentatives = 'http://localhost:4000/TtRepres';
-    const urlInscription = 'http://localhost:4000/TmInscr';
+    const urlAthletes = 'https://json-ymsx.onrender.com/TtAtlet';
+    const urlRepresentatives = 'https://json-ymsx.onrender.com/TtRepres';
+    const urlInscription = 'https://json-ymsx.onrender.com/TmInscr';
 
     const [alert, setAlert] = useState({ show: false, message: '', color: '' });
     const [formData, setFormData] = useState({
