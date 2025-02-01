@@ -1,0 +1,454 @@
+{
+  "TtUsuarios": [
+    {
+      "UsuIdUsu": 1,
+      "UsuNombr": "Juan",
+      "UsuApell": "Pérez",
+      "UsuEmail": "juan.perez@gmail.com",
+      "UsuContr": "juan123",
+      "UsuRol": "administrador",
+      "id": "bb58"
+    },
+    {
+      "UsuIdUsu": 2,
+      "UsuNombr": "María",
+      "UsuApell": "Gómez",
+      "UsuEmail": "maria.gomez@gmail.com",
+      "UsuContr": "maria123",
+      "UsuRol": "entrenador",
+      "id": "7cd2"
+    }
+  ],
+  "TtAtlet": [
+    {
+      "AteIdAtl": 1,
+      "AteNombr": "Pedro",
+      "AteApell": "Sánchez",
+      "AteFecNa": "2005-05-15",
+      "AteNacio": "Venezolano",
+      "AteCedul": "30781458",
+      "AteDirec": "Calle 1, Ciudad",
+      "AteTelef": "04123456789",
+      "AtePlantEst": "Liceo Simon Bolivar",
+      "AteGradoEst": "2do Año",
+      "AteTipoSang": "O+",
+      "AteAlergias": "Ninguna",
+      "AteCondMed": "Ninguna",
+      "RepIdRep": 1,
+      "id": "1"
+    },
+    {
+      "AteIdAtl": 2,
+      "AteNombr": "Lucía",
+      "AteApell": "Martínez",
+      "AteFecNa": "2006-08-20",
+      "AteNacio": "Venezolana",
+      "AteCedul": "35984654",
+      "AteDirec": "Avenida 2, Ciudad",
+      "AteTelef": "04129876543",
+      "AtePlantEst": "Colegio Privado",
+      "AteGradoEst": "6 Grado",
+      "AteTipoSang": "A+",
+      "AteAlergias": "Ninguna",
+      "AteCondMed": "Ninguna",
+      "RepIdRep": 2,
+      "id": "2"
+    },
+    {
+      "AteIdAtl": 0,
+      "AteNombr": "Pepito Griillo",
+      "AteApell": "Andres",
+      "AteCedul": "30781815",
+      "AteFecNa": "15/12/2004",
+      "AteAlergias": "Ninguna",
+      "AteCondMed": "Ninguna",
+      "AteTipoSang": "O+",
+      "AteNacio": "Venezuela",
+      "AtePlantEst": "Colegio Virgen del valle ",
+      "AteGradoEst": "1er Grado",
+      "AteTelef": "04123456789",
+      "RepIdRep": 1,
+      "id": "3"
+    },
+    {
+      "id": "6994",
+      "AteIdAtl": 7,
+      "AteNombr": "Jose",
+      "AteApell": "Andres",
+      "AteCedul": "30781815",
+      "AteFecNa": "15/12/2004",
+      "AteAlergias": "Ninguna",
+      "AteCondMed": "Ninguna",
+      "AteTipoSang": "O+",
+      "AteNacio": "Venezuela",
+      "AtePlantEst": "Colegio Virgen del valle ",
+      "AteGradoEst": "1er Grado",
+      "AteTelef": "04123456789",
+      "RepIdRep": 1
+    }
+  ],
+  "TtRepres": [
+    {
+      "RepIdRep": 1,
+      "RepNombr": "Pedro",
+      "RepApell": "Sánchez",
+      "RepCedul": "19133725",
+      "RepDirec": "Calle 1, Ciudad",
+      "RepTelef": "04123456789",
+      "RepParen": "Padre",
+      "id": "1"
+    },
+    {
+      "RepIdRep": 2,
+      "RepNombr": "Carla",
+      "RepApell": "Martínez",
+      "RepCedul": "15503168",
+      "RepDirec": "Avenida 2, Ciudad",
+      "RepTelef": "04129876543",
+      "RepParen": "Madre",
+      "id": "2"
+    }
+  ],
+  "TmInscr": [
+    {
+      "InsIdIns": 1,
+      "InsIdAtl": 1,
+      "InsFecIn": "2023-01-15",
+      "InsEstIns": "activa",
+      "id": "1499"
+    },
+    {
+      "InsIdIns": 2,
+      "InsIdAtl": 2,
+      "InsFecIn": "2023-02-20",
+      "InsEstIns": "activa",
+      "id": "a974"
+    },
+    {
+      "InsIdIns": 0,
+      "InsIdAtl": 0,
+      "InsFecIn": "2025-01-23",
+      "InsEstIns": "activa",
+      "id": "17ef"
+    },
+    {
+      "id": "752a",
+      "InsIdIns": 0,
+      "InsIdAtl": 7,
+      "InsFecIn": "2025-01-23",
+      "InsEstIns": "activa"
+    }
+  ],
+  "TmCateg": [
+    {
+      "CatIdCat": 1,
+      "CatNombr": "Infantil",
+      "CatRanEd": "16-18",
+      "id": "23b4"
+    },
+    {
+      "CatIdCat": 2,
+      "CatNombr": "Pre-Infantil",
+      "CatRanEd": "12-15",
+      "id": "dd69"
+    },
+    {
+      "CatIdCat": 3,
+      "CatNombr": "Mundialito",
+      "CatRanEd": "9-11",
+      "id": "0bfd"
+    },
+    {
+      "CatIdCat": 4,
+      "CatNombr": "Compota",
+      "CatRanEd": "5-8",
+      "id": "bf87"
+    },
+    {
+      "CatIdCat": 5,
+      "CatNombr": "Teterito",
+      "CatRanEd": "2-4",
+      "id": "abfe"
+    }
+  ],
+  "TmSubCa": [
+    {
+      "SubIdSub": 1,
+      "SubIdCat": 1,
+      "SubNombr": "A",
+      "id": "e379"
+    },
+    {
+      "SubIdSub": 2,
+      "SubIdCat": 2,
+      "SubNombr": "A",
+      "id": "f95c"
+    },
+    {
+      "SubIdSub": 3,
+      "SubIdCat": 3,
+      "SubNombr": "A",
+      "id": "39a5"
+    },
+    {
+      "SubIdSub": 4,
+      "SubIdCat": 4,
+      "SubNombr": "A",
+      "id": "dcb0"
+    },
+    {
+      "SubIdSub": 5,
+      "SubIdCat": 5,
+      "SubNombr": "A",
+      "id": "5948"
+    }
+  ],
+  "TmEquip": [
+    {
+      "EquIdEqui": 1,
+      "EquNombre": "Leones",
+      "EquColUni": "Rojo",
+      "EquIdSubC": 1,
+      "id": "5e68"
+    },
+    {
+      "EquIdEqui": 2,
+      "EquNombre": "Tigres",
+      "EquColUni": "Azul",
+      "EquIdSubC": 2,
+      "id": "65c9"
+    },
+    {
+      "EquIdEqui": 3,
+      "EquNombre": "Jaguares",
+      "EquColUni": "Azul",
+      "EquIdSubC": 3,
+      "id": "f606"
+    },
+    {
+      "EquIdEqui": 4,
+      "EquNombre": "Linces",
+      "EquColUni": "Negro",
+      "EquIdSubC": 4,
+      "id": "d90e"
+    },
+    {
+      "EquIdEqui": 5,
+      "EquNombre": "Titanes",
+      "EquColUni": "Naranja",
+      "EquIdSubC": 5,
+      "id": "d1e0"
+    }
+  ],
+  "TtEquAtl": [
+    {
+      "id": "ob8e",
+      "EquAtlId": 1,
+      "EquAtlIdAtl": 1,
+      "EquAtlIdEqu": 1,
+      "EquAtlRol": "titular",
+      "EquAtlPosic": "Delantero",
+      "EquAtlDorsal": 9
+    },
+    {
+      "id": "dp8e",
+      "EquAtlId": 2,
+      "EquAtlIdAtl": 2,
+      "EquAtlIdEqu": 2,
+      "EquAtlRol": "banca",
+      "EquAtlPosic": "Base",
+      "EquAtlDorsal": 10
+    },
+    {
+      "id": "535f",
+      "EquAtlId": 326,
+      "EquAtlIdAtl": 7,
+      "EquAtlIdEqu": 2,
+      "EquAtlRol": "jugador",
+      "EquAtlPosic": "delantero",
+      "EquAtlDorsal": "5"
+    },
+    {
+      "id": "034f",
+      "EquAtlId": 2805,
+      "EquAtlIdAtl": 0,
+      "EquAtlIdEqu": 1,
+      "EquAtlRol": "jugador",
+      "EquAtlPosic": "Delantero",
+      "EquAtlDorsal": "8"
+    }
+  ],
+  "TtEntre": [
+    {
+      "id": "1",
+      "EndNombr": "Pepe",
+      "EndApell": "González",
+      "EndTelef": "04123456789",
+      "EndEspec": "Tsu en deporte",
+      "EndIdSubCa": 1,
+      "EndCedul": "19133725"
+    },
+    {
+      "id": "2",
+      "EndNombr": "Clara",
+      "EndApell": "López",
+      "EndTelef": "04129876543",
+      "EndEspec": "Tsu en deporte",
+      "EndIdSubCa": 2,
+      "EndCedul": "19133725"
+    },
+    {
+      "id": "daa2",
+      "EndNombr": "Jose",
+      "EndApell": "Andres",
+      "EndCedul": "15856092",
+      "EndTelef": "04147532683",
+      "EndEspec": "Tsu",
+      "EndIdSubCa": 3
+    }
+  ],
+  "TtEntren": [
+    {
+      "EntrIdEntr": 1,
+      "EntrIdSubCa": 1,
+      "EntrDiaSema": "Lunes",
+      "EntrHoraIni": "10:00:00",
+      "EntrHoraFin": "12:00:00",
+      "EntrTipo": "físico",
+      "id": "7fad"
+    },
+    {
+      "EntrIdEntr": 2,
+      "EntrIdSubCa": 2,
+      "EntrDiaSema": "Martes",
+      "EntrHoraIni": "14:00:00",
+      "EntrHoraFin": "16:00:00",
+      "EntrTipo": "técnico",
+      "id": "83fc"
+    },
+    {
+      "id": "db6e",
+      "EntrIdSubCa": 1,
+      "EntrDiaSema": "Lunes",
+      "EntrHoraIni": "18:19",
+      "EntrHoraFin": "20:19",
+      "EntrTipo": "Técnico"
+    },
+    {
+      "EntrIdSubCa": 5,
+      "EntrDiaSema": "Jueves",
+      "EntrHoraIni": "18:00",
+      "EntrHoraFin": "20:00",
+      "EntrTipo": "Físico",
+      "id": "5ce5"
+    }
+  ],
+  "TmTorneo": [
+    {
+      "TorIdTorneo": 1,
+      "TorNombr": "Primavera",
+      "TorLugar": "Estadio Municipal",
+      "TorFecIni": "2023-04-01",
+      "TorFecFin": "2023-04-10",
+      "id": "e1ca"
+    },
+    {
+      "id": "3ed0",
+      "TorNombr": "Estadal",
+      "TorLugar": "Estado Tachira ",
+      "TorFecIni": "2025-01-01",
+      "TorFecFin": "2025-03-26"
+    },
+    {
+      "id": "6439",
+      "TorNombr": "Municipal",
+      "TorLugar": "aaaaaaaaaaaaa",
+      "TorFecIni": "2025-01-01",
+      "TorFecFin": "2025-01-04"
+    }
+  ],
+  "TtTorneoEqu": [
+    {
+      "TorEquId": 1,
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": 1,
+      "id": "787f"
+    },
+    {
+      "TorEquId": 2,
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": 2,
+      "id": "da18"
+    },
+    {
+      "id": "d864",
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": 4
+    },
+    {
+      "id": "56f9",
+      "TorEquIdEqu": 1
+    },
+    {
+      "id": "337a",
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": null
+    },
+    {
+      "id": "5ba0",
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": 3
+    },
+    {
+      "id": "d259",
+      "TorEquIdTorneo": 1,
+      "TorEquIdEqu": 5
+    }
+  ],
+  "TtEval": [
+    {
+      "EvalIdEval": 1,
+      "EvalIdAtl": 1,
+      "EvalIdEnt": 1,
+      "EvalFec": "2023-03-15",
+      "EvalVel": 8,
+      "EvalRes": 7,
+      "EvalDomBal": 9,
+      "EvalPunt": 8,
+      "EvalSaque": 7,
+      "EvalObs": "Buen desempeño",
+      "id": "4336"
+    },
+    {
+      "EvalIdEval": 2,
+      "EvalIdAtl": 2,
+      "EvalIdEnt": 2,
+      "EvalFec": "2023-03-16",
+      "EvalVel": 7,
+      "EvalRes": 8,
+      "EvalDomBal": 6,
+      "EvalPunt": 7,
+      "EvalSaque": 8,
+      "EvalObs": "Necesita mejorar en defensa",
+      "id": "47dd"
+    }
+  ],
+  "TtBecas": [
+    {
+      "BecaIdBeca": 1,
+      "BecaIdAtl": 1,
+      "BecaPorc": 50,
+      "BecaMotivo": "Desempeño académico",
+      "BecaFecOtorg": "2023-03-20",
+      "id": "fe49"
+    },
+    {
+      "BecaIdBeca": 2,
+      "BecaIdAtl": 2,
+      "BecaPorc": 75,
+      "BecaMotivo": "Desempeño deportivo",
+      "BecaFecOtorg": "2023-03-21",
+      "id": "7123"
+    }
+  ]
+}
