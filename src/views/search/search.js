@@ -344,9 +344,9 @@ const Search = () => {
                     )}
                 </CModalBody>
                 <CModalFooter>
-                    <CButton color="secondary" onClick={() => setShowEvaluationModal(false)}>Cerrar</CButton>
+                    <CButton style={{ backgroundColor: 'red' }} onClick={() => setShowEvaluationModal(false)}>Cerrar</CButton>
                     {evaluations.length === 0 && (
-                        <CButton color="primary" onClick={handleAddEvaluation}>Agregar Evaluación</CButton>
+                        <CButton style={{ backgroundColor: 'green' }} onClick={handleAddEvaluation}>Agregar Evaluación</CButton>
                     )}
                 </CModalFooter>
             </CModal>
