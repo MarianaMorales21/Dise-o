@@ -21,10 +21,15 @@ const AppHeaderDropdown = () => {
         <CAvatar src={avatar8} size="md" />
       </CDropdownToggle>
       <CDropdownMenu>
-        <CDropdownItem as={Link} to="/Profile">
-          <CIcon icon={cilUser} className="me-2" />
-          Perfil
-        </CDropdownItem>
+
+        <Link to="/login">
+          <CDropdownItem>
+            <CIcon icon={cilUser} className="me-2" />
+            Perfil
+          </CDropdownItem>
+        </Link>
+
+
         <CDropdownItem as={Link} to="/login">
           <CIcon icon={cilLockLocked} className="me-2" />
           Cerrar Sesion
