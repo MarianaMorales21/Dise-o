@@ -130,4 +130,4 @@ const MainChart = () => {
   )
 }
 
-export default MainChart
+export default MainChart;
