@@ -120,6 +120,17 @@ const Trainer = () => {
         })
     }
 
+    const openAddModal = () => {
+        resetEntrenadorForm()
+        setAddEntrenadorModalOpen(true)
+    }
+
+    const openEditModal = (entrenador) => {
+        setSelectedEntrenador(entrenador)
+        setNewEntrenador(entrenador)
+        setEditEntrenadorModalOpen(true)
+    }
+
     return (
         <CContainer>
             <h1>Lista de Entrenadores</h1>
@@ -131,7 +142,7 @@ const Trainer = () => {
                     marginTop: '15px',
                     marginBottom: '15px',
                 }}
-                onClick={() => setAddEntrenadorModalOpen(true)}
+                onClick={openAddModal}
             >
                 Agregar Entrenador
             </CButton>
@@ -159,11 +170,7 @@ const Trainer = () => {
                                         marginTop: '15px',
                                         marginRight: '10px',
                                     }}
-                                    onClick={() => {
-                                        setSelectedEntrenador(entrenador)
-                                        setNewEntrenador(entrenador)
-                                        setEditEntrenadorModalOpen(true)
-                                    }}
+                                    onClick={() => openEditModal(entrenador)}
                                 >
                                     Editar
                                 </CButton>
