@@ -275,7 +275,7 @@ const Search = () => {
                                     <CTableHeaderCell>Fecha</CTableHeaderCell>
                                     <CTableHeaderCell>Velocidad</CTableHeaderCell>
                                     <CTableHeaderCell>Dominio Balón</CTableHeaderCell>
-                                    <CTableHeaderCell>Puntuación</CTableHeaderCell>
+                                    <CTableHeaderCell>Tiros Acertados</CTableHeaderCell>
                                     <CTableHeaderCell>Saque</CTableHeaderCell>
                                     <CTableHeaderCell>Observaciones</CTableHeaderCell>
                                     <CTableHeaderCell>Resultado</CTableHeaderCell>
@@ -315,17 +315,12 @@ const Search = () => {
                                     onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalVel: e.target.value })}
                                 />
                                 <CFormInput
-                                    label="Resultado"
-                                    value={newEvaluation.EvalRes}
-                                    onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalRes: e.target.value })}
-                                />
-                                <CFormInput
                                     label="Dominio Balón"
                                     value={newEvaluation.EvalDomBal}
                                     onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalDomBal: e.target.value })}
                                 />
                                 <CFormInput
-                                    label="Puntuación"
+                                    label="Tiros Acertados"
                                     value={newEvaluation.EvalPunt}
                                     onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalPunt: e.target.value })}
                                 />
@@ -338,6 +333,11 @@ const Search = () => {
                                     label="Observaciones"
                                     value={newEvaluation.EvalObs}
                                     onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalObs: e.target.value })}
+                                />
+                                <CFormInput
+                                    label="Resultado"
+                                    value={newEvaluation.EvalRes}
+                                    onChange={(e) => setNewEvaluation({ ...newEvaluation, EvalRes: e.target.value })}
                                 />
                             </CForm>
                         </>
