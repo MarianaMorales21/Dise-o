@@ -29,13 +29,12 @@ const WidgetsDropdown = (props) => {
     const fetchData = async () => {
       const api = helpHttp()
       try {
-        const urlEntr = await api.get('https://json-ymsx.onrender.com/TtEntre');
-        const urlUsers = await api.get('https://json-ymsx.onrender.com/TtUsuarios');
-        const urlCateg = await api.get('https://json-ymsx.onrender.com/TmCateg');
-        const urlAtle = await api.get('https://json-ymsx.onrender.com/TtAtlet');
-        const urlRepre = await api.get('https://json-ymsx.onrender.com/TtRepres');
-        const urlEqui = await api.get('https://json-ymsx.onrender.com/TmEquip');
-
+        const urlEntr = await api.get('https://json-ymsx.onrender.com/TtEntre')
+        const urlUsers = await api.get('https://json-ymsx.onrender.com/TtUsuarios')
+        const urlCateg = await api.get('https://json-ymsx.onrender.com/TmCateg')
+        const urlAtle = await api.get('https://json-ymsx.onrender.com/TtAtlet')
+        const urlRepre = await api.get('https://json-ymsx.onrender.com/TtRepres')
+        const urlEqui = await api.get('https://json-ymsx.onrender.com/TmEquip')
 
         setStats({
           users: urlUsers.length,
@@ -341,9 +340,7 @@ const WidgetsDropdown = (props) => {
               className="mt-3 mx-3"
               style={{ height: '70px' }}
               data={{
-                labels: [
-                  "Jose", "Pedro",
-                ],
+                labels: ['Jose', 'Pedro'],
                 datasets: [
                   {
                     label: 'Representantes',
@@ -390,10 +387,7 @@ const WidgetsDropdown = (props) => {
           }
         />
       </CCol>
-
     </CRow>
-
-
   )
 }
 

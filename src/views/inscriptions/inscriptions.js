@@ -91,6 +91,13 @@ const Inscriptions = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            // Validar que la cédula no esté repetida
+            const existingAthlete = await api.get(`${urlAthletes}?AteCedul=${formData.cedula}`);
+            if (existingAthlete && existingAthlete.length > 0) {
+                showAlert('Ya existe un atleta registrado con esa cédula.', 'danger');
+                return;
+            }
+
             let repId = null;
 
             const repResponse = await api.get(`${urlRepresentatives}?RepCedul=${formData.repCedula}`);
@@ -135,8 +142,6 @@ const Inscriptions = () => {
 
             if (!athleteResponse.err) {
                 const athleteId = athleteResponse.AteIdAtl;
-
-
                 const inscriptionData = {
                     InsIdIns: generateId(),
                     InsIdAtl: athleteId,
@@ -144,12 +149,9 @@ const Inscriptions = () => {
                     InsEstIns: 'activa',
                 };
 
-
                 const inscriptionResponse = await api.post(urlInscription, { body: inscriptionData });
 
-
                 if (!inscriptionResponse.err) {
-                    const inscriptionId = inscriptionResponse.InsIdIns;
                     showAlert('¡Atleta registrado exitosamente!', 'success');
                     showModal();
                     resetForm();

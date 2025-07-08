@@ -16,10 +16,8 @@ import {
     CForm,
     CFormSelect,
     CFormInput,
-    CAlert
+    CAlert,
 } from '@coreui/react';
-import { CIcon } from '@coreui/icons-react';
-import { cilTrash } from '@coreui/icons';
 import { helpHttp } from '../../helpHttp';
 
 const Tournaments = () => {
@@ -27,26 +25,21 @@ const Tournaments = () => {
     const urlTournaments = 'https://json-ymsx.onrender.com/TmTorneo';
     const urlTeams = 'https://json-ymsx.onrender.com/TmEquip';
     const urlTournamentTeams = 'https://json-ymsx.onrender.com/TtTorneoEqu';
-    const urlCategories = 'https://json-ymsx.onrender.com/TmCateg';
-    const urlSubcategories = 'https://json-ymsx.onrender.com/TmSubCa';
 
     const [tournaments, setTournaments] = useState([]);
     const [teams, setTeams] = useState([]);
     const [tournamentTeams, setTournamentTeams] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [subcategories, setSubcategories] = useState([]);
-    const [addTournamentModalOpen, setAddTournamentModalOpen] = useState(false);
-    const [deleteModalVisible, setDeleteModalVisible] = useState(false);
     const [selectedTournament, setSelectedTournament] = useState(null);
     const [newTeamId, setNewTeamId] = useState('');
-    const [modalOpen, setModalOpen] = useState(false);
     const [newTournament, setNewTournament] = useState({
         TorNombr: '',
         TorLugar: '',
         TorFecIni: '',
-        TorFecFin: ''
+        TorFecFin: '',
     });
     const [alert, setAlert] = useState({ show: false, message: '', color: '' });
+    const [addTournamentModalOpen, setAddTournamentModalOpen] = useState(false);
+    const [deleteTournamentModalOpen, setDeleteTournamentModalOpen] = useState(false);
     const [addTeamModalOpen, setAddTeamModalOpen] = useState(false);
     const [teamsModalOpen, setTeamsModalOpen] = useState(false);
 
@@ -54,8 +47,6 @@ const Tournaments = () => {
         fetchTournaments();
         fetchTeams();
         fetchTournamentTeams();
-        fetchCategories();
-        fetchSubcategories();
     }, []);
 
     const fetchTournaments = async () => {
@@ -69,7 +60,6 @@ const Tournaments = () => {
 
     const fetchTeams = async () => {
         const response = await api.get(urlTeams);
-        console.log(response);
         if (!response.err) {
             setTeams(response);
         } else {
@@ -86,38 +76,56 @@ const Tournaments = () => {
         }
     };
 
-    const fetchCategories = async () => {
-        const response = await api.get(urlCategories);
+    const handleAddTournament = async () => {
+        const response = await api.post(urlTournaments, { body: newTournament });
         if (!response.err) {
-            setCategories(response);
+            showAlert('Torneo agregado exitosamente', 'success');
+            setAddTournamentModalOpen(false);
+            setNewTournament({ TorNombr: '', TorLugar: '', TorFecIni: '', TorFecFin: '' });
+            fetchTournaments();
         } else {
-            showAlert('Error al cargar categorías', 'danger');
+            showAlert('Error al agregar torneo', 'danger');
         }
     };
 
-    const fetchSubcategories = async () => {
-        const response = await api.get(urlSubcategories);
-        if (!response.err) {
-            setSubcategories(response);
-        } else {
-            showAlert('Error al cargar subcategorías', 'danger');
+    const handleDeleteTournament = async () => {
+        // Verificar si el torneo tiene equipos inscritos
+        const teamsInTournament = tournamentTeams.filter(tt => tt.TorEquIdTorneo === selectedTournament.TorIdTorneo);
+        if (teamsInTournament.length > 0) {
+            showAlert('No se puede eliminar el torneo porque tiene equipos inscritos', 'danger');
+            return;
         }
+
+        const response = await api.del(`${urlTournaments}/${selectedTournament.id}`);
+        if (!response.err) {
+            showAlert('Torneo eliminado', 'success');
+            setDeleteTournamentModalOpen(false);
+            fetchTournaments();
+        } else {
+            showAlert('Error al eliminar torneo', 'danger');
+        }
+    };
+
+    const handleShowTeams = (tournament) => {
+        setSelectedTournament(tournament);
+        setTeamsModalOpen(true);
     };
 
     const handleAddTeam = async () => {
-        const response = await api.post(urlTournamentTeams, {
-            body: {
-                TorEquIdTorneo: selectedTournament.TorIdTorneo,
-                TorEquIdEqu: parseInt(newTeamId, 10)
-            }
-        });
+        const newTournamentTeam = {
+            TorEquIdTorneo: selectedTournament.TorIdTorneo,
+            TorEquIdEqu: parseInt(newTeamId)
+        };
+
+        const response = await api.post(urlTournamentTeams, { body: newTournamentTeam });
         if (!response.err) {
-            showAlert('Equipo agregado al torneo', 'success');
+            showAlert('Equipo agregado al torneo exitosamente', 'success');
+            setAddTeamModalOpen(false);
             setNewTeamId('');
             fetchTournamentTeams();
-            setAddTeamModalOpen(false); // Close the add team modal after adding
+            setTeamsModalOpen(true);
         } else {
-            showAlert('Error al agregar equipo', 'danger');
+            showAlert('Error al agregar equipo al torneo', 'danger');
         }
     };
 
@@ -131,43 +139,21 @@ const Tournaments = () => {
         }
     };
 
+    const getAvailableTeams = () => {
+        if (!selectedTournament) return teams;
+
+        const teamsInTournament = tournamentTeams
+            .filter(tt => tt.TorEquIdTorneo === selectedTournament.TorIdTorneo)
+            .map(tt => tt.TorEquIdEqu);
+
+        return teams.filter(team => !teamsInTournament.includes(team.EquIdEqui));
+    };
+
     const showAlert = (message, color) => {
         setAlert({ show: true, message, color });
         setTimeout(() => {
             setAlert({ show: false, message: '', color: '' });
         }, 3000);
-    };
-
-    const getAvailableTeams = () => {
-        if (!selectedTournament) return [];
-        const tournamentTeamIds = tournamentTeams
-            .filter(t => t.TorEquIdTorneo === selectedTournament.TorIdTorneo)
-            .map(t => t.TorEquIdEqu);
-        return teams.filter(team => !tournamentTeamIds.includes(team.EquIdEqui));
-    };
-
-    const handleAddTournament = async () => {
-        const response = await api.post(urlTournaments, {
-            body: newTournament
-        });
-        if (!response.err) {
-            showAlert('Torneo agregado exitosamente', 'success');
-            setAddTournamentModalOpen(false);
-            setNewTournament({
-                TorNombr: '',
-                TorLugar: '',
-                TorFecIni: '',
-                TorFecFin: ''
-            });
-            fetchTournaments();
-        } else {
-            showAlert('Error al agregar torneo', 'danger');
-        }
-    };
-
-    const handleShowTeams = (tournament) => {
-        setSelectedTournament(tournament);
-        setTeamsModalOpen(true);
     };
 
     return (
@@ -199,12 +185,22 @@ const Tournaments = () => {
                                 >
                                     Equipos
                                 </CButton>
+                                <CButton
+                                    style={{ backgroundColor: 'red', color: 'white' }}
+                                    onClick={() => {
+                                        setSelectedTournament(tournament);
+                                        setDeleteTournamentModalOpen(true);
+                                    }}
+                                >
+                                    Eliminar Torneo
+                                </CButton>
                             </CCardBody>
                         </CCard>
                     </CCol>
                 ))}
             </CRow>
 
+            {/* Modal para agregar torneo */}
             <CModal visible={addTournamentModalOpen} onClose={() => setAddTournamentModalOpen(false)}>
                 <CModalHeader>
                     <CModalTitle>Agregar Torneo</CModalTitle>
@@ -216,18 +212,21 @@ const Tournaments = () => {
                             placeholder="Nombre del Torneo"
                             value={newTournament.TorNombr}
                             onChange={(e) => setNewTournament({ ...newTournament, TorNombr: e.target.value })}
+                            className="mb-3"
                         />
                         <CFormInput
                             type="text"
                             placeholder="Lugar del Torneo"
                             value={newTournament.TorLugar}
                             onChange={(e) => setNewTournament({ ...newTournament, TorLugar: e.target.value })}
+                            className="mb-3"
                         />
                         <CFormInput
                             type="date"
                             placeholder="Fecha de Inicio"
                             value={newTournament.TorFecIni}
                             onChange={(e) => setNewTournament({ ...newTournament, TorFecIni: e.target.value })}
+                            className="mb-3"
                         />
                         <CFormInput
                             type="date"
@@ -253,22 +252,65 @@ const Tournaments = () => {
                 </CModalFooter>
             </CModal>
 
+            {/* Modal para eliminar torneo */}
+            <CModal visible={deleteTournamentModalOpen} onClose={() => setDeleteTournamentModalOpen(false)}>
+                <CModalHeader>
+                    <CModalTitle>Eliminar Torneo</CModalTitle>
+                </CModalHeader>
+                <CModalBody>
+                    ¿Está seguro de que desea eliminar el torneo {selectedTournament?.TorNombr}?
+                </CModalBody>
+                <CModalFooter>
+                    <CButton
+                        style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' }}
+                        onClick={() => setDeleteTournamentModalOpen(false)}
+                    >
+                        Cancelar
+                    </CButton>
+                    <CButton
+                        style={{ backgroundColor: 'green', color: 'white' }}
+                        onClick={handleDeleteTournament}
+                    >
+                        Confirmar
+                    </CButton>
+                </CModalFooter>
+            </CModal>
+
+            {/* Modal para mostrar equipos en el torneo */}
             <CModal visible={teamsModalOpen} onClose={() => setTeamsModalOpen(false)}>
                 <CModalHeader>
                     <CModalTitle>Equipos en Torneo {selectedTournament?.TorNombr}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
-                    <ul>
+                    <ul style={{ listStyle: 'none', padding: 0 }}>
                         {tournamentTeams
-                            .filter(t => t.TorEquIdTorneo === selectedTournament?.TorIdTorneo)
+                            .filter((t) => t.TorEquIdTorneo === selectedTournament?.TorIdTorneo)
                             .map((tournamentTeam) => {
-                                const team = teams.find(t => t.EquIdEqui === tournamentTeam.TorEquIdEqu);
+                                const team = teams.find((t) => t.EquIdEqui === tournamentTeam.TorEquIdEqu);
                                 return (
-                                    <li key={tournamentTeam.TorEquId}>
-                                        {team ? team.EquNombre : 'Equipo no encontrado'}
+                                    <li key={tournamentTeam.id} style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        padding: '10px',
+                                        borderBottom: '1px solid #eee'
+                                    }}>
+                                        <span>{team ? team.EquNombre : 'Equipo no encontrado'}</span>
+                                        <CButton
+                                            style={{ backgroundColor: 'red', color: 'white' }}
+                                            size="sm"
+                                            onClick={() => handleDeleteTeam(tournamentTeam.id)}
+                                        >
+                                            Eliminar
+                                        </CButton>
                                     </li>
                                 );
                             })}
+                        {tournamentTeams.filter((t) => t.TorEquIdTorneo === selectedTournament?.TorIdTorneo).length === 0 && (
+                            <li style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
+                                No hay equipos en este torneo
+                            </li>
+                        )}
                     </ul>
                 </CModalBody>
                 <CModalFooter>
@@ -290,16 +332,14 @@ const Tournaments = () => {
                 </CModalFooter>
             </CModal>
 
+            {/* Modal para agregar equipo */}
             <CModal visible={addTeamModalOpen} onClose={() => setAddTeamModalOpen(false)}>
                 <CModalHeader>
                     <CModalTitle>Agregar Equipo a {selectedTournament?.TorNombr}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <CForm>
-                        <CFormSelect
-                            value={newTeamId}
-                            onChange={(e) => setNewTeamId(e.target.value)}
-                        >
+                        <CFormSelect value={newTeamId} onChange={(e) => setNewTeamId(e.target.value)}>
                             <option value="">Seleccione un equipo</option>
                             {getAvailableTeams().map((team) => (
                                 <option key={team.EquIdEqui} value={team.EquIdEqui}>
@@ -312,41 +352,19 @@ const Tournaments = () => {
                 <CModalFooter>
                     <CButton
                         style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' }}
-                        onClick={() => setAddTeamModalOpen(false)}
+                        onClick={() => {
+                            setAddTeamModalOpen(false);
+                            setNewTeamId('');
+                        }}
                     >
                         Cerrar
                     </CButton>
                     <CButton
                         style={{ backgroundColor: 'green', color: 'white' }}
                         onClick={handleAddTeam}
-                        on
                         disabled={!newTeamId}
                     >
                         Agregar Equipo
-                    </CButton>
-                </CModalFooter>
-            </CModal>
-
-            <CModal visible={deleteModalVisible} onClose={() => setDeleteModalVisible(false)}>
-                <CModalHeader>
-                    <CModalTitle>Atención</CModalTitle>
-                </CModalHeader>
-                <CModalBody>¿Desea borrar este equipo del torneo?</CModalBody>
-                <CModalFooter>
-                    <CButton
-                        style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' }}
-                        onClick={() => setDeleteModalVisible(false)}
-                    >
-                        Cancelar
-                    </CButton>
-                    <CButton
-                        style={{ backgroundColor: 'green', color: 'white' }}
-                        onClick={() => {
-                            handleDeleteTeam(selectedTournament.TorEquId);
-                            setDeleteModalVisible(false);
-                        }}
-                    >
-                        Borrar
                     </CButton>
                 </CModalFooter>
             </CModal>

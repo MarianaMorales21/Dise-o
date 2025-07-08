@@ -61,17 +61,17 @@ const Athlete = () => {
     };
 
     const handleDelete = (athlete) => {
-        setSelectedAthlete(athlete);
+        setSelectedAthlete(athlete); // Asegúrate de que athlete tenga el ID correcto
         setModalOpen(true);
     };
 
     const handleUpdate = async () => {
-        const response = await api.put(`${urlAthletes}/${selectedAthlete.AteIdAtl}`, {
+        const response = await api.put(`${urlAthletes}/${selectedAthlete.id}`, { // Cambiado a 'id'
             body: editData,
         });
         if (!response.err) {
             setAthletes((prev) =>
-                prev.map((athlete) => (athlete.AteIdAtl === selectedAthlete.AteIdAtl ? { ...athlete, ...editData } : athlete))
+                prev.map((athlete) => (athlete.id === selectedAthlete.id ? { ...athlete, ...editData } : athlete)) // Cambiado a 'id'
             );
             showAlert('Atleta actualizado', 'success');
             setEditModalOpen(false);
@@ -81,13 +81,17 @@ const Athlete = () => {
     };
 
     const handleConfirmDelete = async () => {
-        const response = await api.del(`${urlAthletes}/${selectedAthlete.AteIdAtl}`);
-        if (!response.err) {
-            setAthletes((prev) => prev.filter((athlete) => athlete.AteIdAtl !== selectedAthlete.AteIdAtl));
-            showAlert('Atleta eliminado', 'success');
-            setModalOpen(false);
-        } else {
-            showAlert('Error al eliminar atleta', 'danger');
+        try {
+            const response = await api.del(`${urlAthletes}/${selectedAthlete.id}`); // Cambiado a 'id'
+            if (!response.err) {
+                setAthletes((prev) => prev.filter((athlete) => athlete.id !== selectedAthlete.id)); // Cambiado a 'id'
+                showAlert('Atleta eliminado', 'success');
+                setModalOpen(false);
+            } else {
+                showAlert('Error al eliminar atleta', 'danger');
+            }
+        } catch (error) {
+            showAlert(`Error inesperado: ${error.message}`, 'danger');
         }
     };
 
@@ -112,7 +116,7 @@ const Athlete = () => {
 
             <CRow>
                 {filteredAthletes.map((athlete) => (
-                    <CCol sm="6" key={athlete.AteIdAtl} className="mb-4">
+                    <CCol sm="6" key={athlete.id} className="mb-4"> {/* Cambiado a 'id' */}
                         <CCard>
                             <CCardHeader>
                                 <CCardTitle>{athlete.AteNombr} {athlete.AteApell}</CCardTitle>

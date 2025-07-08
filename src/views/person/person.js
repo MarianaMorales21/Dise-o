@@ -72,12 +72,12 @@ const Person = () => {
     };
 
     const handleUpdate = async () => {
-        const response = await api.put(`${urlRepresentatives}/${selectedRepresentative.RepIdRep}`, {
+        const response = await api.put(`${urlRepresentatives}/${selectedRepresentative.id}`, { // Cambiado a 'id'
             body: editData,
         });
         if (!response.err) {
             setRepresentatives((prev) =>
-                prev.map((rep) => (rep.RepIdRep === selectedRepresentative.RepIdRep ? { ...rep, ...editData } : rep))
+                prev.map((rep) => (rep.id === selectedRepresentative.id ? { ...rep, ...editData } : rep)) // Cambiado a 'id'
             );
             showAlert('Representante actualizado', 'success');
             setEditModalOpen(false);
@@ -87,9 +87,9 @@ const Person = () => {
     };
 
     const handleConfirmDelete = async () => {
-        const response = await api.del(`${urlRepresentatives}/${selectedRepresentative.RepIdRep}`);
+        const response = await api.del(`${urlRepresentatives}/${selectedRepresentative.id}`); // Cambiado a 'id'
         if (!response.err) {
-            setRepresentatives((prev) => prev.filter((rep) => rep.RepIdRep !== selectedRepresentative.RepIdRep));
+            setRepresentatives((prev) => prev.filter((rep) => rep.id !== selectedRepresentative.id)); // Cambiado a 'id'
             showAlert('Representante eliminado', 'success');
             setModalOpen(false);
         } else {
@@ -118,7 +118,7 @@ const Person = () => {
 
             <CRow>
                 {filteredRepresentatives.map((rep) => (
-                    <CCol sm="6" key={rep.RepIdRep} className="mb-4">
+                    <CCol sm="6" key={rep.id} className="mb-4"> {/* Cambiado a 'id' */}
                         <CCard>
                             <CCardHeader>
                                 <CCardTitle>{rep.RepNombr} {rep.RepApell}</CCardTitle>
